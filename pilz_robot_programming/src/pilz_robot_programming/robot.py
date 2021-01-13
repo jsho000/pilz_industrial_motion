@@ -323,7 +323,7 @@ class Robot(object):
             elif resp.result.value == IsBrakeTestRequiredResult.UNKNOWN:
                 rospy.logerr("Failure during call of braketest required service: BrakeTestRequirementStatus UNKNOWN")
                 raise rospy.ROSException("Could not determine if braketest is required.")
-        except rospy.ROSException, e:
+        except rospy.ROSException as e:
             rospy.logerr("Failure during call of braketest required service: {0}".format(e))
             raise e
 
@@ -344,7 +344,7 @@ class Robot(object):
         resp = BrakeTestResponse()
         try:
             resp = execute_brake_test_client()
-        except rospy.ROSException, e:
+        except rospy.ROSException as e:
             rospy.logerr("Failure during call of braketest execute service: {0}".format(e))
             raise e
 
@@ -360,7 +360,7 @@ class Robot(object):
     def _get_execute_brake_test_service(self):
         try:
             rospy.wait_for_service(self._BRAKE_TEST_EXECUTE_SRV, self._SERVICE_WAIT_TIMEOUT_S)
-        except rospy.ROSException, e:
+        except rospy.ROSException as e:
             rospy.logerr(
                 "Unsuccessful waited for braketest execute service to come up: {0}".format(e))
             raise e
