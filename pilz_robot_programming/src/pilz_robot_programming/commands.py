@@ -614,7 +614,7 @@ class Gripper(_BaseCmd):
 
         # create goal constraints
         goal_constraints = Constraints()
-        if isinstance(self._goal, (float, int, long)):
+        if isinstance(self._goal, (float, int)):
             joint_names = robot._robot_commander.get_group(self._planning_group).get_active_joints()
 
             if len(joint_names) != 1:
