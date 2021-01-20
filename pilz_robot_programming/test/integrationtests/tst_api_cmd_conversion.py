@@ -1084,7 +1084,7 @@ class TestAPICmdConversion(unittest.TestCase):
             tcp_ref = self.tf_listener.lookupTransform("ref_frame", "prbt_tcp", time_tf)
             tcp_base = self.tf_listener.lookupTransform(base_frame, "prbt_tcp", time_tf)
         except Exception as e:
-            print e
+            print(e)
             rospy.logerr("Failed to setup transforms for test!")
 
         tcp_ref_msg = pm.toMsg(pm.fromTf(tcp_ref))

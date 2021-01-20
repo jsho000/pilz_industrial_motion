@@ -98,7 +98,7 @@ class TestAPIPauseConcurrency(unittest.TestCase):
         """
 
         # 1. start the robot motion
-        move_thread = MoveThread(self.robot, self.ptp)
+        move_thread = MoveThread(self.robot, self.ptp, RobotMoveFailed)
         move_thread.start()
         self.assertTrue(self.robot_motion_observer.wait_motion_start(
             move_tolerance=self._TOLERANCE_FOR_MOTION_DETECTION_RAD, sleep_interval=self._SLEEP_TIME_S))
@@ -125,7 +125,8 @@ class TestAPIPauseConcurrency(unittest.TestCase):
         thread_stop.join()
         thread_resume.join()
 
-        self.assertRaises(RobotMoveFailed, move_thread.join())
+        self.assertTrue(move_thread.exception_thrown)
+        move_thread.join()
 
     def test_resume_move_concurrency_when_paused_without_move(self):
         """ Test the concurrent situation of resume and move pause is requested

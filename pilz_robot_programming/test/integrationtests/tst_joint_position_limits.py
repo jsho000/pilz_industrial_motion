@@ -44,7 +44,7 @@ class TestJointPositionLimits(unittest.TestCase):
     def setUp(self):
         self.robot = Robot(API_VERSION)
         self.joint_names = _JOINT_LIMITS_DEGREE.keys()
-        self.joint_names.sort()
+        self.joint_names = sorted(self.joint_names)
 
     def tearDown(self):
         if hasattr(self, 'robot'):

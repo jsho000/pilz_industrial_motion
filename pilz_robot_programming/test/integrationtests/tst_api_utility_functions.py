@@ -105,6 +105,7 @@ class TestAPIUtilityFunctions(unittest.TestCase):
         """
         self.assertRaises(RobotCurrentStateError, self.robot.get_current_joint_states, planning_group="invalid")
 
+
 if __name__ == '__main__':
     import rostest
     rospy.init_node('test_api_utility_functions')

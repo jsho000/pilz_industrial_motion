@@ -53,6 +53,7 @@ class TestSpeedOverride(unittest.TestCase):
         self.assertEqual(ptp._vel_scale, 0.3)
         self.assertEqual(ptp._acc_scale, 0.4)
 
+
 if __name__ == '__main__':
     import rostest
     rospy.init_node('tst_robot_functions')
