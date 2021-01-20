@@ -15,19 +15,19 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import unittest
-from rospkg import RosPack
 import numpy as np
 import tf
 import tf_conversions.posemath as pm
 from geometry_msgs.msg import Point
 from tst_api_utils import setOverrideParam
+from pathlib import Path
 
 
 from pilz_robot_programming.robot import *
 from pilz_industrial_motion_testutils.xml_testdata_loader import *
 from pilz_robot_programming.commands import *
 
-_TEST_DATA_FILE_NAME = RosPack().get_path("pilz_robot_programming") + "/test/test_data/testdata_deprecated.xml"
+_TEST_DATA_FILE_NAME = Path(__file__).parent.parent.absolute() / Path("test_data/test_data.xml")
 PLANNING_GROUP_NAME = "manipulator"
 TARGET_LINK_NAME = "prbt_tcp"
 API_VERSION = "1"
@@ -369,7 +369,7 @@ class TestAPICmdConversion(unittest.TestCase):
 
             Test results:
                 1. -
-                2. The scaled velocity scaling factor and the scaled accerleration scaling factor is set.
+                2. The scaled velocity scaling factor and the scaled accelerationscaling factor is set.
         """
         # +++++++++++++++++++++++
         rospy.loginfo("Step 1")
@@ -542,7 +542,7 @@ class TestAPICmdConversion(unittest.TestCase):
 
             Test results:
                 1. -
-                2. The scaled velocity scaling factor and the scaled accerleration scaling factor is set.
+                2. The scaled velocity scaling factor and the scaled acceleration scaling factor is set.
         """
         # +++++++++++++++++++++++
         rospy.loginfo("Step 1")
@@ -687,7 +687,7 @@ class TestAPICmdConversion(unittest.TestCase):
 
             Test results:
                 1. -
-                2. The scaled velocity scaling factor and the scaled accerleration scaling factor is set.
+                2. The scaled velocity scaling factor and the scaled acceleration scaling factor is set.
         """
 
         # +++++++++++++++++++++++
@@ -1055,7 +1055,7 @@ class TestAPICmdConversion(unittest.TestCase):
 
             1. create and publish tf
             2. get current pose with base and ref
-            3. move roboter to ref
+            3. move robot to ref
             4. get current pose with ref and base
             5. analyse positions
         """

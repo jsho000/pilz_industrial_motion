@@ -15,7 +15,6 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import unittest
-from rospkg import RosPack
 import numpy
 
 from geometry_msgs.msg import Point

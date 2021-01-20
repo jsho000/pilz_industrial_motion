@@ -17,7 +17,6 @@
 import unittest
 import rospy
 import sys
-from rospkg import RosPack
 from pilz_robot_programming.robot import *
 from pilz_robot_programming.commands import Ptp
 from tst_api_utils import setOverrideParam
