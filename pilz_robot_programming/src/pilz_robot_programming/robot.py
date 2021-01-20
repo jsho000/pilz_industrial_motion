@@ -286,7 +286,8 @@ class Robot(object):
                 self._sequence_client.cancel_goal()
 
     def resume(self):
-        """The function resumes a paused robot motion. If the motion command is not paused or no motion command is active,
+        """The function resumes a paused robot motion.
+        If the motion command is not paused or no motion command is active,
         it has no effects.
 
         :note:

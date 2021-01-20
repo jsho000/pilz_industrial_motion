@@ -74,7 +74,8 @@ class TestSelfCollision(unittest.TestCase):
 
         move_thread_lin = MoveThread(self.robot,
                                      Lin(goal=Pose(position=Point(0.15, 0, 0.12)), relative=True, vel_scale=0.5,
-                                         acc_scale=0.1))
+                                         acc_scale=0.1),
+                                     RobotMoveFailed)
         move_thread_lin.start()
 
         rospy.loginfo("Waiting for notification...")
