@@ -199,8 +199,8 @@ class Robot(object):
             current_pose = self.tf_listener_.transformPose(base, stamped).pose
             return current_pose
         except tf.Exception as e:
-            rospy.logerr(e.message)
-            raise RobotCurrentStateError(e.message)
+            rospy.logerr(str(e))
+            raise RobotCurrentStateError(str(e))
 
     def move(self, cmd):
         """ Allows the user to start/execute robot motion commands.

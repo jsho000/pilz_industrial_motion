@@ -19,8 +19,7 @@ from math import radians
 
 from geometry_msgs.msg import Point
 
-from pilz_robot_programming.robot import *
-from pilz_robot_programming.commands import *
+from pilz_robot_programming import *
 
 from pilz_industrial_motion_testutils.integration_test_utils import *
 

@@ -15,9 +15,8 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import unittest
-from pilz_robot_programming.robot import *
+from pilz_robot_programming import *
 from pilz_industrial_motion_testutils.xml_testdata_loader import *
-from pilz_robot_programming.commands import *
 from pilz_industrial_motion_testutils.integration_test_utils import *
 from pilz_industrial_motion_testutils.robot_motion_observer import RobotMotionObserver
 from tst_api_utils import setOverrideParam

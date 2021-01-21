@@ -14,8 +14,7 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from pilz_robot_programming.robot import *
-from pilz_robot_programming.commands import *
+from pilz_robot_programming import *
 from pilz_industrial_motion_testutils.acceptance_test_utils import _askPermission, _askSuccess
 from pilz_industrial_motion_testutils.integration_test_utils import *
 from pilz_industrial_motion_testutils.robot_motion_observer import RobotMotionObserver

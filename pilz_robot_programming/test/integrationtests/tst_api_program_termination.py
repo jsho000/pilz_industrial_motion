@@ -20,8 +20,7 @@ import subprocess
 import signal
 from pilz_industrial_motion_testutils.xml_testdata_loader import *
 from pilz_industrial_motion_testutils.robot_motion_observer import RobotMotionObserver
-from pilz_robot_programming.commands import *
-from pilz_robot_programming.robot import *
+from pilz_robot_programming import *
 from pathlib import Path
 
 _TEST_DATA_FILE_NAME = Path(__file__).parent.parent.absolute() / Path("test_data/test_data.xml")
