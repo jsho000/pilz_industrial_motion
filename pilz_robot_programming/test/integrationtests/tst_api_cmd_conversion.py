@@ -931,7 +931,7 @@ class TestAPICmdConversion(unittest.TestCase):
             rospy.sleep(rospy.Duration.from_sec(0.1))
 
             goal_pose_in_rf = self.tf_listener.lookupTransform("ref_move_frame", "goal_pose_bf", rospy.Time(0))
-        except:
+        except tf.TransformException:
             rospy.logerr("Failed to setup transforms for test!")
 
         goal_pose_rf_msg = pm.toMsg(pm.fromTf(goal_pose_in_rf))
@@ -1032,7 +1032,7 @@ class TestAPICmdConversion(unittest.TestCase):
             rospy.sleep(rospy.Duration.from_sec(0.1))
 
             goal_pose_in_rf = self.tf_listener.lookupTransform("ref_rel_frame", "rel_goal_pose_bf", time_tf)
-        except:
+        except tf.TransformException:
             rospy.logerr("Failed to setup transforms for test!")
 
         goal_pose_rf_msg = pm.toMsg(pm.fromTf(goal_pose_in_rf))
