@@ -294,6 +294,10 @@ class _BaseCmd(_AbstractCmd):
                                    robot.get_current_joint_states(planning_group=self._planning_group))
         return goal_joint_state
 
+    @staticmethod
+    def _calc_acc_scale(vel_scale):
+        raise NotImplementedError("Needs to be defined by child class")
+
 
 class Ptp(_BaseCmd):
     """Represents a single point-to-point (Ptp) command.
