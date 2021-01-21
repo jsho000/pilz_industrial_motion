@@ -234,7 +234,7 @@ class _BaseCmd(_AbstractCmd):
             joint_names = robot._robot_commander.get_group(self._planning_group).get_active_joints()
             joint_values = self._get_joint_pose(robot)
 
-            if len(joint_names) != len(joint_values):
+            if len(joint_names) != len(list(joint_values)):
                 raise IndexError("Given joint goal does not match the planning group " + req.group_name + ".")
 
             for joint_name, joint_value in zip(joint_names, joint_values):
