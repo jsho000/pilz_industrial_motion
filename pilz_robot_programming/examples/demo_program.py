@@ -15,8 +15,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 from geometry_msgs.msg import Point
-from pilz_robot_programming.robot import *
-from pilz_robot_programming.commands import *
+from pilz_robot_programming import *
 import math
 import rospy
 
@@ -50,7 +49,7 @@ def start_program():
            vel_scale=0.1, acc_scale=0.1))
 
     # Circ movement
-    r.move(Circ(goal=Pose(position=Point(0.2, -0.2, 0.8)), center=Point(0.1, -0.1, 0.8), acc_scale=0.4))
+    r.move(Circ(goal=Pose(position=Point(0.2, -0.2, 0.8)), center=Point(0.1, -0.1, 0.8), acc_scale=0.1))
 
     # Move robot with stored pose
     r.move(Ptp(goal=pose_after_relative, vel_scale=0.2))
@@ -58,7 +57,7 @@ def start_program():
     # Repeat the previous steps with a sequence command
     sequence = Sequence()
     sequence.append(Lin(goal=Pose(position=Point(0.2, 0, 0.8)), vel_scale=0.1, acc_scale=0.1))
-    sequence.append(Circ(goal=Pose(position=Point(0.2, -0.2, 0.8)), center=Point(0.1, -0.1, 0.8), acc_scale=0.4))
+    sequence.append(Circ(goal=Pose(position=Point(0.2, -0.2, 0.8)), center=Point(0.1, -0.1, 0.8), acc_scale=0.1))
     sequence.append(Ptp(goal=pose_after_relative, vel_scale=0.2))
 
     r.move(sequence)
@@ -68,13 +67,14 @@ def start_program():
 
     # Blend sequence
     blend_sequence = Sequence()
-    blend_sequence.append(Lin(goal=Pose(position=Point(0.2, 0, 0.7))), blend_radius=0.01)
-    blend_sequence.append(Lin(goal=Pose(position=Point(0.2, 0.1, 0.7))))
+    blend_sequence.append(Lin(goal=Pose(position=Point(0.2, 0, 0.7)), acc_scale=0.05), blend_radius=0.01)
+    blend_sequence.append(Lin(goal=Pose(position=Point(0.2, 0.1, 0.7)), acc_scale=0.05))
 
     r.move(blend_sequence)
 
     # Move with custom reference frame
-    r.move(Ptp(goal=Pose(position=Point(0, 0, 0.1)), reference_frame="prbt_tcp"))
+    r.move(Ptp(goal=PoseStamped(header=Header(frame_id="prbt_tcp"),
+                                pose=Pose(position=Point(0, 0, 0.1)))))
     r.move(Ptp(goal=Pose(position=Point(0, -0.1, 0)), reference_frame="prbt_link_3", relative=True))
 
     # Create and execute an invalid ptp command with out of bound joint values

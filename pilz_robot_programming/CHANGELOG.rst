@@ -7,6 +7,29 @@ Forthcoming
 * changing references from pilz_command_planner to pilz_industrial_motion_planner
 * Contributors: Pilz GmbH and Co. KG
 
+0.4.12 (2020-11-24)
+-------------------
+* Adapt to generalized test-utils
+* Add missing test-depend on prbt_hardware_support
+* Contributors: Pilz GmbH and Co. KG
+
+0.4.11 (2020-07-16)
+-------------------
+* Add Attribute based equivalence for commands.
+* Add feature to store points.
+* Add PoseStamped and tuple goals.
+* Add get_current_pose_stamped to robot api
+* Replace tf by tf2 in pilz_robot_programming.
+* Rename _BaseCmd -> BaseCmd.
+* Remove outdated add_python_coverage() function.
+* Remove outdated/superfluous documents.
+* Remove static version from doc.
+* Remove unused import of prbt_hardware_support.
+* Fix acceptance tests.
+* Fix segfault on shutdown.
+* Fix python 3 compatibility issues.
+* Contributors: Pilz GmbH and Co. KG
+
 0.4.10 (2019-12-04)
 -------------------
 * Adapt to new brake test srv definitions in pilz_msgs
