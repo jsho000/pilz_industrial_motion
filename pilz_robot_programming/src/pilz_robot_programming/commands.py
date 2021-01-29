@@ -24,13 +24,12 @@ from operator import add
 import rospy
 import tf2_geometry_msgs  # for buffer.transform() to eat a geometry_msgs.Pose directly
 from tf_conversions import transformations
-from geometry_msgs.msg import Quaternion, Pose
-from geometry_msgs.msg import PoseStamped
-from pilz_msgs.msg import MoveGroupSequenceGoal, MotionSequenceItem
-from moveit_msgs.msg import (OrientationConstraint, MotionPlanRequest, JointConstraint, Constraints,
-                             PositionConstraint, PlanningOptions)
+from geometry_msgs.msg import Pose, PoseStamped, Quaternion
+from moveit_msgs.msg import (Constraints, JointConstraint, MotionPlanRequest,
+                             MotionSequenceItem, MoveGroupSequenceGoal,
+                             OrientationConstraint, PlanningOptions,
+                             PositionConstraint)
 import shape_msgs.msg as shape_msgs
-from tf import transformations
 
 from .move_control_request import _MoveControlState
 
@@ -273,7 +272,7 @@ class BaseCmd(_AbstractCmd):
         if isinstance(self._goal, str):
             raise TypeError("String is not convertible into joint values.")
         joint_names = joint_names if len(joint_names) != 0 else self._active_joints
-        joint_values = self._get_joint_pose()
+        joint_values = list(self._get_joint_pose())
         if len(joint_names) != len(joint_values):
             raise IndexError("Given joint goal does not match the active joints " + str(joint_names) + ".")
 

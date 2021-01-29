@@ -30,7 +30,8 @@ from std_srvs.srv import Trigger
 import tf2_ros
 import tf2_geometry_msgs  # for buffer.transform() to eat a geometry_msgs.Pose directly
 
-from pilz_msgs.msg import MoveGroupSequenceAction, IsBrakeTestRequiredResult
+from moveit_msgs.msg import MoveGroupSequenceAction
+from pilz_msgs.msg import IsBrakeTestRequiredResult
 from pilz_msgs.srv import GetSpeedOverride, IsBrakeTestRequired, BrakeTest
 
 from .move_control_request import _MoveControlState, MoveControlAction, _MoveControlStateMachine
@@ -204,8 +205,8 @@ class Robot(object):
             current_pose = self.tf_buffer_.transform(zero_pose, base, rospy.Duration(5, 0))
             return current_pose
         except tf2_ros.LookupException as e:
-            rospy.logerr(e.message)
-            raise RobotCurrentStateError(e.message)
+            rospy.logerr("%s" % e)
+            raise RobotCurrentStateError(e)
 
     def get_current_pose(self, target_link=_DEFAULT_TARGET_LINK, base=_DEFAULT_BASE_LINK):
         """Returns the current pose of target link in the reference frame.
