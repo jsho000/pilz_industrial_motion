@@ -417,7 +417,7 @@ class TestAPICmdConversion(unittest.TestCase):
 
             Test results:
                 1. -
-                2. The scaled velocity scaling factor and the scaled accelerationscaling factor is set.
+                2. The scaled velocity scaling factor and the scaled acceleration scaling factor is set.
         """
         # +++++++++++++++++++++++
         rospy.loginfo("Step 1")
