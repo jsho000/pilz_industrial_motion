@@ -335,7 +335,7 @@ class BaseCmd(_AbstractCmd):
         return goal_joint_state
 
     @staticmethod
-    def _calc_acc_scale(vel_scale):
+    def _calc_acc_scale(vel_scale):  # pragma: no cover  Abstract method
         raise NotImplementedError("Needs to be defined by child class")
 
     def _to_robot_reference(self, pose_frame, goal_pose_custom_ref):
